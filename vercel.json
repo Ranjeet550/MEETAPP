@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "UI/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "UI/dist",
+        "installCommand": "cd UI && npm install",
+        "buildCommand": "cd UI && npm run vercel-build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "UI/dist/$1"
+    }
+  ]
+}
