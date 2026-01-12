@@ -10,7 +10,14 @@ const createMeeting = async (meetingId, userId) => {
       },
       body: JSON.stringify({ meetingId, userId }),
     });
-    return await response.json();
+    
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || `HTTP error! status: ${response.status}`);
+    }
+    
+    return data;
   } catch (error) {
     console.error('Error creating meeting:', error);
     throw error;
@@ -27,7 +34,14 @@ const joinMeeting = async (meetingId, userId) => {
       },
       body: JSON.stringify({ meetingId, userId }),
     });
-    return await response.json();
+    
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || `HTTP error! status: ${response.status}`);
+    }
+    
+    return data;
   } catch (error) {
     console.error('Error joining meeting:', error);
     throw error;
@@ -44,7 +58,14 @@ const leaveMeeting = async (meetingId, userId) => {
       },
       body: JSON.stringify({ meetingId, userId }),
     });
-    return await response.json();
+    
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || `HTTP error! status: ${response.status}`);
+    }
+    
+    return data;
   } catch (error) {
     console.error('Error leaving meeting:', error);
     throw error;

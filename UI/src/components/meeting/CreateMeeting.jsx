@@ -64,7 +64,7 @@ const CreateMeeting = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-emerald-50 flex flex-col items-center justify-center p-4 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex flex-col items-center justify-center p-4 overflow-hidden">
       {/* Remove scrollbar */}
       <style>
         {`
@@ -77,15 +77,15 @@ const CreateMeeting = () => {
       {/* Modern Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center mb-4">
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full flex items-center justify-center mr-3 shadow-lg">
+          <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mr-3 shadow-lg">
             <FaVideo className="text-white text-xl" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 to-emerald-700 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             Create Instant Meeting
           </h1>
         </div>
         
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-white/80 max-w-2xl mx-auto">
           Start a professional video meeting in seconds. No login required!
         </p>
       </div>
@@ -93,11 +93,11 @@ const CreateMeeting = () => {
       {/* Main Content */}
       <div className="w-full max-w-md">
         {!createdMeetingId ? (
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/20">
             {/* Animated Rocket Illustration - Smaller */}
             <div className="flex justify-center mb-4">
               <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-emerald-400 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
                   <FaRocket className="text-white text-2xl transform rotate-45" />
                 </div>
                 {/* Smoke effect - Smaller */}
@@ -105,10 +105,10 @@ const CreateMeeting = () => {
               </div>
             </div>
             
-            <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
+            <h2 className="text-xl font-bold text-center text-white mb-2">
               Ready to connect?
             </h2>
-            <p className="text-center text-gray-600 mb-6 text-sm">
+            <p className="text-center text-white/80 mb-6 text-sm">
               Click the button below to instantly create a meeting
             </p>
             
@@ -116,7 +116,7 @@ const CreateMeeting = () => {
             <button
               onClick={handleCreateMeeting}
               disabled={isCreating}
-              className={`w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${isCreating ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
+              className={`w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold py-3 px-4 rounded-lg text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${isCreating ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
             >
               {isCreating ? (
                 <>
@@ -134,13 +134,13 @@ const CreateMeeting = () => {
             {/* Features List - Compact */}
             <div className="mt-6 space-y-2">
               {[
-                { icon: <FaUsers className="text-blue-600" />, text: 'Unlimited participants' },
-                { icon: <FaLink className="text-emerald-600" />, text: 'Instant shareable link' },
-                { icon: <FaVideo className="text-cyan-600" />, text: 'HD video quality' },
-                { icon: <FaCopy className="text-purple-600" />, text: 'Auto-copy to clipboard' }
+                { icon: <FaUsers className="text-cyan-400" />, text: 'Unlimited participants' },
+                { icon: <FaLink className="text-cyan-400" />, text: 'Instant shareable link' },
+                { icon: <FaVideo className="text-cyan-400" />, text: 'HD video quality' },
+                { icon: <FaCopy className="text-cyan-400" />, text: 'Auto-copy to clipboard' }
               ].map((feature, index) => (
-                <div key={index} className="flex items-center space-x-2 text-sm text-gray-600">
-                  <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
+                <div key={index} className="flex items-center space-x-2 text-sm text-white/80">
+                  <div className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
                     {feature.icon}
                   </div>
                   <span>{feature.text}</span>
@@ -149,7 +149,7 @@ const CreateMeeting = () => {
             </div>
           </div>
         ) : (
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/20">
             {/* Success Animation - Smaller */}
             <div className="flex justify-center mb-4">
               <div className="relative">
@@ -164,10 +164,10 @@ const CreateMeeting = () => {
               </div>
             </div>
             
-            <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
+            <h2 className="text-xl font-bold text-center text-white mb-2">
               Meeting Created! 🎉
             </h2>
-            <p className="text-center text-gray-600 mb-4 text-sm">
+            <p className="text-center text-white/80 mb-4 text-sm">
               Your meeting is ready. Share this link with participants:
             </p>
             
@@ -217,7 +217,7 @@ const CreateMeeting = () => {
                 onClick={() => {
                   window.open(`/meeting/${createdMeetingId}`, '_blank');
                 }}
-                className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center cursor-pointer"
+                className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold py-2.5 px-4 rounded-lg text-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center cursor-pointer"
               >
                 <FaArrowRight className="mr-2" />
                 Join Meeting
@@ -225,7 +225,7 @@ const CreateMeeting = () => {
               
               <button
                 onClick={() => setCreatedMeetingId('')}
-                className="w-full bg-white text-blue-600 font-medium py-2.5 px-4 rounded-lg border border-blue-200 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center cursor-pointer"
+                className="w-full bg-white/10 text-cyan-400 font-medium py-2.5 px-4 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center cursor-pointer"
               >
                 <FaRocket className="mr-2" />
                 Create Another
@@ -233,9 +233,9 @@ const CreateMeeting = () => {
             </div>
             
             {/* Quick Tips - Compact */}
-            <div className="mt-4 pt-3 border-t border-blue-100">
-              <h3 className="text-xs font-medium text-gray-600 mb-1">QUICK TIPS:</h3>
-              <ul className="text-xs text-gray-600 space-y-1">
+            <div className="mt-4 pt-3 border-t border-white/20">
+              <h3 className="text-xs font-medium text-white/80 mb-1">QUICK TIPS:</h3>
+              <ul className="text-xs text-white/80 space-y-1">
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span>Share the link with your team</span>

@@ -58,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen relative overflow-hidden bg-gradient-to-br from-blue-600 to-emerald-600">
+    <div className="h-screen relative overflow-hidden bg-gradient-to-br from-gray-900 to-black">
       <AnimatedSnow snowflakeCount={60} />
       
       <div className="relative z-10 h-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
@@ -66,7 +66,7 @@ const Login = () => {
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg">
             Welcome Back
           </h1>
-          <p className="text-blue-200 text-base sm:text-lg">Sign in to continue your journey</p>
+          <p className="text-cyan-200 text-base sm:text-lg">Sign in to continue your journey</p>
         </div>
         
         <div className="bg-white/10 backdrop-blur-lg p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md border border-white/20">
@@ -80,7 +80,7 @@ const Login = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                 placeholder="Enter your email"
                 required
               />
@@ -96,7 +96,7 @@ const Login = () => {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                   placeholder="Enter your password"
                   required
                 />
@@ -115,7 +115,7 @@ const Login = () => {
               disabled={isLoading}
               className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base ${
                 !isLoading
-                  ? 'bg-gradient-to-r from-blue-500 to-emerald-600 hover:from-blue-600 hover:to-emerald-700 shadow-lg hover:shadow-xl' 
+                  ? 'bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 shadow-lg hover:shadow-xl cursor-pointer'
                   : 'bg-gray-500 cursor-not-allowed opacity-70'
               }`}
             >
@@ -133,7 +133,7 @@ const Login = () => {
           <div className="mt-4 sm:mt-6 text-center">
             <p className="text-white/80 text-sm sm:text-base">
               Don't have an account?{' '}
-              <a href="/register" className="text-emerald-300 hover:text-emerald-200 font-semibold transition-colors">
+              <a href="/register" className="text-cyan-300 hover:text-cyan-200 font-semibold transition-colors cursor-pointer">
                 Sign up here
               </a>
             </p>

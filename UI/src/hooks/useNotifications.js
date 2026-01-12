@@ -202,6 +202,20 @@ export const useNotifications = () => {
     );
   };
 
+  const confirmAction = (message, title, onConfirm, confirmLabel = 'Confirm') => {
+    return notification.showWarning(message, {
+      title,
+      duration: 0, // Don't auto-dismiss
+      action: {
+        label: confirmLabel,
+        onClick: () => {
+          notification.clearAllNotifications();
+          onConfirm();
+        }
+      }
+    });
+  };
+
   return {
     // Original methods
     ...notification,
@@ -230,16 +244,3 @@ export const useNotifications = () => {
 };
 
 export default useNotifications;
-  const confirmAction = (message, title, onConfirm, confirmLabel = 'Confirm') => {
-    return notification.showWarning(message, {
-      title,
-      duration: 0, // Don't auto-dismiss
-      action: {
-        label: confirmLabel,
-        onClick: () => {
-          notification.clearAllNotifications();
-          onConfirm();
-        }
-      }
-    });
-  };

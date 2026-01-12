@@ -50,7 +50,7 @@ const JoinMeeting = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-emerald-50 flex flex-col items-center justify-center p-4 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex flex-col items-center justify-center p-4 overflow-hidden">
       {/* Remove scrollbar */}
       <style>
         {`
@@ -63,36 +63,36 @@ const JoinMeeting = () => {
       {/* Modern Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center mb-4">
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full flex items-center justify-center mr-3 shadow-lg">
+          <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mr-3 shadow-lg">
             <FaDoorOpen className="text-white text-xl" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 to-emerald-700 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             Join Meeting
           </h1>
         </div>
         
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-white/80 max-w-2xl mx-auto">
           Enter the meeting ID to join an existing meeting
         </p>
       </div>
       
       {/* Main Content */}
       <div className="w-full max-w-md">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/20">
           {/* Animated Door Illustration */}
           <div className="flex justify-center mb-4">
             <div className="relative">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-emerald-400 rounded-t-full flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-t-full flex items-center justify-center shadow-lg">
                 <FaDoorOpen className="text-white text-2xl" />
               </div>
-              <div className="w-16 h-4 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-b-lg"></div>
+              <div className="w-16 h-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-b-lg"></div>
             </div>
           </div>
           
-          <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
+          <h2 className="text-xl font-bold text-center text-white mb-2">
             Enter Meeting ID
           </h2>
-          <p className="text-center text-gray-600 mb-4 text-sm">
+          <p className="text-center text-white/80 mb-4 text-sm">
             Paste the meeting ID you received
           </p>
           
@@ -100,21 +100,21 @@ const JoinMeeting = () => {
           <div className="mb-4">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaLink className="text-blue-400" />
+                <FaLink className="text-cyan-400" />
               </div>
-              <input
-                type="text"
-                placeholder="Enter meeting ID..."
-                value={meetingId}
-                onChange={(e) => setMeetingId(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-              />
+            <input
+              type="text"
+              placeholder="Enter meeting ID..."
+              value={meetingId}
+              onChange={(e) => setMeetingId(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 border border-white/30 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none transition-all bg-white/20 text-white"
+            />
             </div>
           </div>
           
           {/* Error Message */}
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600 flex items-center">
+            <div className="mb-4 p-3 bg-red-900/50 border border-red-700 rounded-lg text-sm text-red-400 flex items-center">
               <span className="mr-2">⚠️</span>
               <span>{error}</span>
             </div>
@@ -124,7 +124,7 @@ const JoinMeeting = () => {
           <button
             onClick={handleJoinMeeting}
             disabled={isJoining || !meetingId}
-            className={`w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${(isJoining || !meetingId) ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
+            className={`w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold py-3 px-4 rounded-lg text-base shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${(isJoining || !meetingId) ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
           >
             {isJoining ? (
               <>
@@ -140,9 +140,9 @@ const JoinMeeting = () => {
           </button>
           
           {/* Quick Tips */}
-          <div className="mt-6 pt-3 border-t border-blue-100">
-            <h3 className="text-xs font-medium text-gray-600 mb-1">HOW TO JOIN:</h3>
-            <ul className="text-xs text-gray-600 space-y-1">
+          <div className="mt-6 pt-3 border-t border-white/20">
+            <h3 className="text-xs font-medium text-white/80 mb-1">HOW TO JOIN:</h3>
+            <ul className="text-xs text-white/80 space-y-1">
               <li className="flex items-start">
                 <span className="mr-2">•</span>
                 <span>Get the meeting ID from the organizer</span>
@@ -160,10 +160,10 @@ const JoinMeeting = () => {
           
           {/* Alternative Actions */}
           <div className="mt-4 text-center">
-            <p className="text-xs text-gray-500 mb-2">Don't have a meeting ID?</p>
+            <p className="text-xs text-white/60 mb-2">Don't have a meeting ID?</p>
             <button
               onClick={() => window.location.href = '/create-meeting'}
-              className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center justify-center mx-auto cursor-pointer"
+              className="text-xs text-cyan-400 hover:text-cyan-300 font-medium flex items-center justify-center mx-auto cursor-pointer"
             >
               <FaUserPlus className="mr-1" />
               Create a new meeting instead

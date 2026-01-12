@@ -19,6 +19,15 @@ const MeetingSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  }
+});
+
+// Update the updatedAt field before saving
+MeetingSchema.pre('save', function() {
+  this.updatedAt = Date.now();
 });
 
 module.exports = mongoose.model('Meeting', MeetingSchema);

@@ -8,7 +8,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import CreateMeeting from './components/meeting/CreateMeeting';
 import JoinMeeting from './components/meeting/JoinMeeting';
-import MeetingRoom from './components/meeting/MeetingRoom';
+import MeetingRoom from './components/meeting/MeetingRoomRefactored';
 
 function App() {
   return (

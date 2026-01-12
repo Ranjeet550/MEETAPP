@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaVideo, FaUsers, FaComments, FaDesktop, FaLink, FaLock, FaMobileAlt, FaRocket, FaShareAlt, FaUser, FaMicrophone, FaPhone, FaArrowRight, FaChevronDown, FaPlay } from 'react-icons/fa';
+import { FaVideo, FaUsers, FaComments, FaDesktop, FaLink, FaLock, FaMobileAlt, FaRocket, FaShareAlt, FaUser, FaMicrophone, FaPhone, FaArrowRight, FaChevronDown, FaPlay, FaCalendar, FaCog, FaShieldAlt, FaChartLine, FaGlobe, FaClock, FaStar, FaCode, FaCloud, FaBolt, FaRobot, FaBrain, FaNetworkWired } from 'react-icons/fa';
 import AnimatedSnow from './common/AnimatedSnow';
 
 // Register ScrollTrigger plugin
@@ -17,6 +17,7 @@ const Home = () => {
   const ctaRef = useRef(null);
   const floatingElements = useRef([]);
   const [showVideoPreview, setShowVideoPreview] = useState(true);
+  const [activeFeature, setActiveFeature] = useState(null);
 
   useEffect(() => {
     // Simple animations without complex GSAP
@@ -28,6 +29,20 @@ const Home = () => {
         ease: 'power2.out'
       });
     }
+
+    // Animate floating elements
+    floatingElements.current.forEach((el, index) => {
+      if (el) {
+        gsap.to(el, {
+          y: Math.random() * 20 - 10,
+          x: Math.random() * 20 - 10,
+          duration: 3 + Math.random() * 2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+      }
+    });
 
     // Cleanup
     return () => {
@@ -46,32 +61,35 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-600 to-emerald-600">
-      <AnimatedSnow snowflakeCount={80} />
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-900 to-black">
+    <AnimatedSnow snowflakeCount={80} />
+    <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-black/80"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
       
       <div className="relative z-10">
         {/* Debug: Simple visible content */}
         <div className="pt-20 pb-10">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-6xl font-bold text-white mb-4 drop-shadow-lg">NexusMeet</h1>
-            <p className="text-2xl text-white/90 mb-8">Professional Video Meetings</p>
-            
+            <p className="text-2xl text-white/90 mb-8">Next-Generation Video Conferencing for the Modern Workplace</p>
+             
             <div className="flex justify-center space-x-4 mb-16">
               <Link
                 to="/create-meeting"
-                className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/30 transition-all duration-300 border border-white/30"
+                className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/30 transition-all duration-300 border border-white/30 hover:scale-105"
               >
                 Start Meeting
               </Link>
               <Link
                 to="/join-meeting"
-                className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/30 transition-all duration-300 border border-white/30"
+                className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/30 transition-all duration-300 border border-white/30 hover:scale-105"
               >
                 Join Meeting
               </Link>
             </div>
           </div>
         </div>
+        
 
         {/* Professional Floating Elements */}
         <div ref={el => floatingElements.current[0] = el} className="absolute top-20 left-10 w-6 h-6 bg-white/20 rounded-full opacity-40"></div>
@@ -93,8 +111,10 @@ const Home = () => {
             </div>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto font-medium">
-              Professional video meetings for the modern workplace. <span className="font-semibold text-white">Secure, reliable, and enterprise-ready.</span>
+              Next-generation video conferencing for the modern workplace. <span className="font-semibold text-white">Secure, reliable, and AI-powered.</span>
             </p>
+            
+            
             
             {/* Professional CTA Buttons */}
             <div ref={heroRef} className="hero-buttons flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16 relative z-10">
@@ -145,6 +165,9 @@ const Home = () => {
                 </div>
               </div>
             </button>
+            <div className="text-center text-white/80 text-sm mb-4">
+              <p>Experience seamless video conferencing with NexusMeet. Join or create meetings in seconds.</p>
+            </div>
             
             {/* Animated Video Preview */}
             {showVideoPreview && (
@@ -162,8 +185,8 @@ const Home = () => {
                   {/* Animated Participant Grid */}
                   <div className="grid grid-cols-2 gap-3 w-full h-full p-4">
                     {/* Main Speaker - Animated */}
-                    <div className="bg-gradient-to-br from-blue-500 to-emerald-500 rounded-xl relative overflow-hidden shadow-lg">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-emerald-600/30"></div>
+                    <div className="bg-gray-800 rounded-xl relative overflow-hidden shadow-lg">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Main Speaker" className="w-full h-full object-cover" />
                       <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-xs px-3 py-1 rounded-full shadow-sm text-white font-medium">
                         You (Speaker)
                       </div>
@@ -171,48 +194,39 @@ const Home = () => {
                         <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-sm"></div>
                         <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse shadow-sm" style={{animationDelay: '0.2s'}}></div>
                       </div>
-                      {/* Animated Video Effect */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 border-3 border-white/30 rounded-full animate-spin opacity-40" style={{animationDuration: '8s'}}></div>
-                        <div className="absolute w-16 h-16 border-2 border-white/20 rounded-full animate-ping"></div>
-                      </div>
                     </div>
                     
                     {/* Other Participants - Animated */}
                     <div className="grid grid-rows-2 gap-3">
-                      <div className="bg-gradient-to-br from-emerald-400 to-green-500 rounded-xl relative overflow-hidden shadow-lg">
+                      <div className="bg-gray-800 rounded-xl relative overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face" alt="Sarah" className="w-full h-full object-cover" />
                         <div className="absolute bottom-2 right-2 bg-black/70 backdrop-blur-sm text-xs px-2 py-1 rounded-full shadow-sm text-white font-medium">
                           Sarah
                         </div>
                         <div className="absolute top-2 left-2 w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-sm"></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-12 h-12 border-2 border-white/30 rounded-full animate-spin opacity-30" style={{animationDuration: '6s'}}></div>
-                        </div>
                       </div>
-                      <div className="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl relative overflow-hidden shadow-lg">
+                      <div className="bg-gray-800 rounded-xl relative overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face" alt="Mike" className="w-full h-full object-cover" />
                         <div className="absolute bottom-2 right-2 bg-black/70 backdrop-blur-sm text-xs px-2 py-1 rounded-full shadow-sm text-white font-medium">
                           Mike
                         </div>
                         <div className="absolute top-2 left-2 w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-sm"></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-12 h-12 border-2 border-white/30 rounded-full animate-spin opacity-30" style={{animationDuration: '10s'}}></div>
-                        </div>
                       </div>
                     </div>
                   </div>
                   
                   {/* Animated Video Controls */}
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-3 bg-black/60 backdrop-blur-sm rounded-full px-6 py-3 z-20">
-                    <button className="p-2 bg-green-500/80 rounded-full text-white hover:bg-green-500 transition shadow-lg" onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.2 })} onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2 })}>
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-3 bg-gray-800 backdrop-blur-sm rounded-full px-6 py-3 z-20">
+                    <button className="p-2 bg-cyan-500/80 rounded-full text-white hover:bg-cyan-500 transition shadow-lg" onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.2 })} onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2 })}>
                       <FaMicrophone className="text-sm" />
                     </button>
-                    <button className="p-2 bg-blue-500/80 rounded-full text-white hover:bg-blue-500 transition shadow-lg" onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.2 })} onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2 })}>
+                    <button className="p-2 bg-cyan-500/80 rounded-full text-white hover:bg-cyan-500 transition shadow-lg" onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.2 })} onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2 })}>
                       <FaVideo className="text-sm" />
                     </button>
                     <button className="p-2 bg-red-500/80 rounded-full text-white hover:bg-red-500 transition shadow-lg" onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.2 })} onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2 })}>
                       <FaPhone className="text-sm" />
                     </button>
-                    <button className="p-2 bg-purple-500/80 rounded-full text-white hover:bg-purple-500 transition shadow-lg" onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.2 })} onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2 })}>
+                    <button className="p-2 bg-cyan-500/80 rounded-full text-white hover:bg-cyan-500 transition shadow-lg" onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.2 })} onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.2 })}>
                       <FaDesktop className="text-sm" />
                     </button>
                   </div>
@@ -265,16 +279,15 @@ const Home = () => {
       </div>
 
         {/* Professional Features Section */}
-        <div ref={featuresRef} className="bg-white/10 backdrop-blur-sm py-20 mt-16 border-t border-white/20">
+        <div ref={featuresRef}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-                Enterprise-Grade Features
+                Futuristic Features
               </h2>
-              <p className="text-xl text-white/90 font-medium">Built for professionals, by professionals</p>
+              <p className="text-xl text-white/90 font-medium">Built for the future, by innovators</p>
             </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Professional Feature Cards */}
             {[
               {
@@ -357,6 +370,12 @@ const Home = () => {
                 </div>
                 <h3 className="text-lg font-bold text-white mb-3">{feature.title}</h3>
                 <p className="text-white/80 text-sm leading-relaxed">{feature.description}</p>
+                <button
+                  onClick={() => alert(`Feature: ${feature.title}`)}
+                  className="mt-3 bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full hover:bg-white/30 transition-all duration-200 border border-white/30"
+                >
+                  Learn More
+                </button>
               </div>
             ))}
           </div>
@@ -364,17 +383,17 @@ const Home = () => {
       </div>
 
       {/* Professional CTA Section */}
-      <div ref={ctaRef} className="bg-white/10 backdrop-blur-sm py-20 relative overflow-hidden mt-16 border-t border-white/20">
+      <div ref={ctaRef} className=" backdrop-blur-sm py-20 relative overflow-hidden mt-16 border-t border-white/20">
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-            Ready for Professional Meetings?
+            Ready for Next-Gen Meetings?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Experience the future of video conferencing. Secure, reliable, and enterprise-ready.
+            Experience the future of video conferencing. Secure, reliable, and AI-powered.
           </p>
 
           <div className="cta-buttons flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link 
+            <Link
               to="/create-meeting"
               className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-3 font-medium shadow-2xl transition duration-300 hover:bg-white/30 hover:scale-105 transform"
               onMouseEnter={(e) => {
@@ -384,7 +403,7 @@ const Home = () => {
                 gsap.to(e.currentTarget, { scale: 1, duration: 0.2 });
               }}
             >
-              <span className="absolute inset-0 flex h-full w-full items-center justify-center bg-white text-blue-600 group-hover:translate-x-full transition duration-300">
+              <span className="absolute inset-0 flex h-full w-full items-center justify-center bg-white text-gray-900 group-hover:translate-x-full transition duration-300">
                 <FaArrowRight className="mr-2" /> Start Now
               </span>
               <span className="flex items-center transition duration-300 group-hover:-translate-x-full">
@@ -435,7 +454,7 @@ const Home = () => {
           </div>
 
           <div className="border-t border-white/20 mt-8 pt-8 text-center text-sm text-white/60">
-            <p className="font-medium">© {new Date().getFullYear()} NexusMeet. All rights reserved. Enterprise-grade video conferencing.</p>
+            <p className="font-medium">© {new Date().getFullYear()} NexusMeet. All rights reserved. Next-generation video conferencing.</p>
           </div>
         </div>
       </footer>

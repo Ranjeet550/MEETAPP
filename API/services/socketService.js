@@ -98,6 +98,42 @@ const socketService = (io) => {
             }
         });
 
+        // Handle reactions
+        socket.on('send-reaction', (data) => {
+            console.log('Reaction received:', data);
+            if (data.meetingId && currentMeetingId === data.meetingId) {
+                socket.to(currentMeetingId).emit('reaction-received', {
+                    id: data.id,
+                    userId: data.userId,
+                    reaction: data.reaction,
+                    emoji: data.emoji,
+                    timestamp: data.timestamp
+                });
+            }
+        });
+
+        socket.on('reaction', (data) => {
+            console.log('Reaction received (legacy):', data);
+            if (data.meetingId && currentMeetingId === data.meetingId && data.reaction) {
+                socket.to(currentMeetingId).emit('reaction-received', data.reaction);
+            }
+        });
+
+        // Handle whiteboard events
+        socket.on('whiteboard-draw', (data) => {
+            console.log('Whiteboard draw received:', data);
+            if (data.meetingId && currentMeetingId === data.meetingId) {
+                socket.to(currentMeetingId).emit('whiteboard-draw', data);
+            }
+        });
+
+        socket.on('whiteboard-clear', (data) => {
+            console.log('Whiteboard clear received:', data);
+            if (data.meetingId && currentMeetingId === data.meetingId) {
+                socket.to(currentMeetingId).emit('whiteboard-clear', data);
+            }
+        });
+
         // Handle disconnect
         socket.on('disconnect', () => {
             console.log('Client disconnected:', socket.id);
