@@ -5,9 +5,7 @@
       "src": "UI/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "UI/dist",
-        "installCommand": "cd UI && npm install",
-        "buildCommand": "cd UI && npm run vercel-build"
+        "distDir": "UI/dist"
       }
     }
   ],
