@@ -1,4 +1,4 @@
-FROM railwayapp/railpack-runtime:latest
+FROM ubuntu:latest
 
 # Install Node.js
 RUN apt-get update && apt-get install -y curl && \
