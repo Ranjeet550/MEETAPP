@@ -1,9 +1,7 @@
-@echo off
+#!/bin/bash
 
-rem Start the API server
-cd API
-start cmd /k npm start
+# Start the API server
+cd API && npm start &
 
-rem Start the UI
-cd ..\UI
-start cmd /k npm run dev
+# Start the UI
+cd ../UI && npm run dev
