@@ -8,8 +8,8 @@ fi
 
 # Start the API server
 cd /app/API || { echo "Failed to enter API directory"; exit 1; }
-node server.js &
+npm start &
 
 # Start the UI
 cd /app/UI || { echo "Failed to enter UI directory"; exit 1; }
-node node_modules/vite/bin/vite.js dev
+npm run dev

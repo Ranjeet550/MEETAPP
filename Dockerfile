@@ -14,6 +14,12 @@ RUN chmod +x /app/start.sh
 # Set the working directory
 WORKDIR /app
 
+# Install API dependencies
+RUN cd /app/API && npm install
+
+# Install UI dependencies
+RUN cd /app/UI && npm install
+
 # Expose the necessary ports
 EXPOSE 3000 5173
 
