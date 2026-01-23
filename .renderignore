@@ -1,0 +1,6 @@
+node_modules
+.git
+.env
+UI/node_modules
+API/node_modules
+UI/dist
