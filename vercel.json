@@ -19,8 +19,12 @@
       "dest": "API/server.js"
     },
     {
-      "src": "/(?!api)(.*)$",
+      "src": "/(?!api|_next|static|.*\\.)",
       "dest": "UI/dist/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "UI/dist/$1"
     }
   ]
 }
