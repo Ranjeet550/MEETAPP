@@ -11,8 +11,21 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
+// CORS configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://meetapp-one.vercel.app',
+    process.env.FRONTEND_URL
+  ].filter(Boolean),
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Serve static files from UI dist
@@ -45,10 +58,7 @@ app.use((err, req, res, next) => {
 
 // WebSocket setup
 const io = new Server(server, {
-  cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-    methods: ['GET', 'POST']
-  }
+  cors: corsOptions
 });
 
 // Initialize Socket Service
