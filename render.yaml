@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: meetapp-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd API && npm install
+    startCommand: cd API && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: static
+    name: meetapp-ui
+    staticPublishPath: ./UI/dist
+    buildCommand: cd UI && npm install && npm run build
+    routes:
+      - path: /api
+        destination: meetapp-api

@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const { Server } = require('socket.io');
 const http = require('http');
+const path = require('path');
 
 dotenv.config();
 
@@ -14,6 +15,9 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from UI dist
+app.use(express.static(path.join(__dirname, '../UI/dist')));
+
 // Database connection
 connectDB();
 
@@ -21,6 +25,11 @@ connectDB();
 const setupRoutes = require('./services/routeService');
 const socketService = require('./services/socketService');
 setupRoutes(app);
+
+// Serve index.html for all non-API routes (SPA fallback)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../UI/dist/index.html'));
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

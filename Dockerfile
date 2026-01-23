@@ -1,24 +1,16 @@
-FROM ubuntu:latest
-
-# Install Node.js
-RUN apt-get update && apt-get install -y curl && \
-    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs
+FROM node:20-alpine
 
 # Copy the application files
 COPY . /app
 
-# Make start.sh executable
-RUN chmod +x /app/start.sh
+# Make scripts executable
+RUN chmod +x /app/start.sh /app/render-build.sh
 
 # Set the working directory
 WORKDIR /app
 
-# Install API dependencies
-RUN cd /app/API && npm install
-
-# Install UI dependencies
-RUN cd /app/UI && npm install
+# Install dependencies and build
+RUN /app/render-build.sh
 
 # Expose the necessary ports
 EXPOSE 3000 5173
