@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaVideo, FaUserPlus, FaSignInAlt, FaUser, FaDoorOpen } from 'react-icons/fa';
+import { FaVideo, FaSignInAlt, FaUser, FaDoorOpen } from 'react-icons/fa';
 import { useNotifications } from '../../hooks/useNotifications';
 
 const Navbar = () => {
