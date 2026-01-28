@@ -76,14 +76,9 @@ const Register = () => {
       <AnimatedSnow snowflakeCount={60} />
       
       <div className="relative z-10 h-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
-        <div className="text-center mb-4 sm:mb-6">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg">
-            Join Us Today
-          </h1>
-          <p className="text-cyan-200 text-base sm:text-lg">Create your account and start your journey</p>
-        </div>
+       
         
-        <div className="bg-white/10 backdrop-blur-lg p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md border border-white/20 max-h-[calc(100vh-8rem)] overflow-y-auto">
+        <div className="bg-white/10 backdrop-blur-lg p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md border border-white/20">
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
             <div>
               <label className="block text-white text-sm font-semibold mb-2" htmlFor="name">
